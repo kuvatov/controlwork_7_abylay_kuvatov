@@ -9,7 +9,38 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ record.author }} ({{ record.email }})</h5>
-                <a href="{% url 'record_edit' record.pk %}">Edit</a>
+                <a href="{% url 'record_edit' record.pk %}">Редактировать</a>
+                <a href="{% url 'record_delete' record.pk %}" class="card-link text-danger" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal-{{ task.pk }}">Удалить</a>
+                <div class="confirm-delete">
+                    <div class="modal fade" id="exampleModal-{{ task.pk }}" tabindex="-1"
+                         aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Подтвердите удаление</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-row form-login">
+                                        <p>Вы уверены, что хотите удалить задачу <span>#{{ record.pk }}</span> ?!
+                                        </p>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{% url 'record_delete' record.pk %}"
+                                       class="btn btn-danger">Удалить</a>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Отмена
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p class="card-text">{{ record.text }}</p>
             </div>
         </div>

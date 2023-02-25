@@ -47,3 +47,9 @@ def record_edit(request: WSGIRequest, pk: int):
             'form': form,
             'record': record
         })
+
+
+def record_delete(request: WSGIRequest, pk: int):
+    record = get_object_or_404(GuestBook, pk=pk)
+    record.delete()
+    return redirect('home')
