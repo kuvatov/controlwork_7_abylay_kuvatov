@@ -1,9 +1,24 @@
 {% extends 'base.html' %}
 {% block title %}Records View{% endblock %}
-{% block content_heading %}Записи{% endblock %}
+{% block content_heading %}Гостевая книга{% endblock %}
 {% block content %}
+{% if records %}
 {% for record in records %}
-<p>{{ record.author }}</p>
-<p>{{ record.status }}</p>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ record.author }} ({{ record.email }})</h5>
+                <p class="card-text">{{ record.text }}</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endfor %}
+{% else %}
+<div class="another_view">
+    <h2>Записей нет!</h2>
+    <p><a href="#">Добавить запись</a></p>
+</div>
+{% endif %}
 {% endblock %}
