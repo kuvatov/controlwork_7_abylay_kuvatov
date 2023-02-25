@@ -11,9 +11,9 @@
                 <h5 class="card-title">{{ record.author }} ({{ record.email }})</h5>
                 <a href="{% url 'record_edit' record.pk %}">Редактировать</a>
                 <a href="{% url 'record_delete' record.pk %}" class="card-link text-danger" data-bs-toggle="modal"
-                   data-bs-target="#exampleModal-{{ task.pk }}">Удалить</a>
+                   data-bs-target="#exampleModal-{{ record.pk }}">Удалить</a>
                 <div class="confirm-delete">
-                    <div class="modal fade" id="exampleModal-{{ task.pk }}" tabindex="-1"
+                    <div class="modal fade" id="exampleModal-{{ record.pk }}" tabindex="-1"
                          aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog">

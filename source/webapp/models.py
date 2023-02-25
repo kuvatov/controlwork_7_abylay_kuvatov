@@ -25,7 +25,8 @@ class GuestBook(models.Model):
 
     def delete(self, using=None, keep_parents=False):
         self.is_deleted = True
-        self.deleted_date = timezone.now()
+        self.status = StatusChoice.BLOCKED
+        self.deleted_at = timezone.now()
         self.save()
 
     class Meta:
