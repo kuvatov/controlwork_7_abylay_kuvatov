@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models import TextChoices
-from django.utils import timezone
 
 
 class StatusChoice(TextChoices):

@@ -16,7 +16,7 @@ def guest_book_view(request: WSGIRequest):
     context = {
         'records': records
     }
-    return render(request, 'home.html', context=context)
+    return render(request, 'records_view.html', context=context)
 
 
 def record_add(request: WSGIRequest):
@@ -28,7 +28,7 @@ def record_add(request: WSGIRequest):
     form = GuestBookForm(data=request.POST)
     if form.is_valid():
         GuestBook.objects.create(**form.cleaned_data)
-        return redirect('home')
+        return redirect('records_view')
     else:
         return render(request, 'record_add.html', context={
             'form': form
@@ -46,7 +46,7 @@ def record_edit(request: WSGIRequest, pk: int):
     form = GuestBookForm(request.POST, instance=record)
     if form.is_valid():
         form.save()
-        return redirect('home')
+        return redirect('records_view')
     else:
         return render(request, 'record_edit.html', context={
             'form': form,
@@ -57,4 +57,4 @@ def record_edit(request: WSGIRequest, pk: int):
 def record_delete(request: WSGIRequest, pk: int):
     record = get_object_or_404(GuestBook, pk=pk)
     record.delete()
-    return redirect('home')
+    return redirect('records_view')

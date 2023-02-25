@@ -24,12 +24,6 @@ body {
 .view_body h5 {
     display: inline-block;
 }
-.view_detail h5 {
-    color: darkgoldenrod;
-}
-.modal-body span {
-    color: blue;
-}
 .content_heading {
     text-align: right;
 }
@@ -38,21 +32,12 @@ textarea {
     overflow: hidden;
     resize: none;
 }
-pre {
-    white-space: pre-wrap;
-}
 .page_name {
     text-align: right;
     display: inline-block;
 }
-.page_name span {
-    color: darkgoldenrod
-}
-.btn {
-    display: inline-block;
-}
 .page_action .btn {
-    width: 100px;
+    width: 120px;
 }
 footer {
     background-color: #0d6efd;
