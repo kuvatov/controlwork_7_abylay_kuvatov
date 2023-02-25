@@ -27,3 +27,6 @@ class GuestBook(models.Model):
         self.is_deleted = True
         self.deleted_date = timezone.now()
         self.save()
+
+    class Meta:
+        verbose_name_plural = 'Guest Book'

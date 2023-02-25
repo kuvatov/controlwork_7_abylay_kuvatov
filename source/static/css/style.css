@@ -1,0 +1,74 @@
+body {
+    position: relative;
+    min-height: 100vh;
+}
+.main-header {
+    background-color: #0d6efd;
+}
+.container a {
+    text-decoration: none;
+}
+.navbar-dark {
+    font-size: 13px;
+    color: white;
+    font-weight: 600;
+    padding-right: 30px;
+}
+.main-content {
+    padding-bottom: 3.5rem;
+}
+.card-checkbox {
+    display: inline-block;
+    float: right;
+}
+.view_body h5 {
+    display: inline-block;
+    color: darkgoldenrod;
+}
+.view_detail h5 {
+    color: darkgoldenrod;
+}
+.modal-body span {
+    color: blue;
+}
+.content_heading {
+    text-align: right;
+}
+textarea {
+    display: block;
+    overflow: hidden;
+    resize: none;
+}
+pre {
+    white-space: pre-wrap;
+}
+.page_name {
+    text-align: right;
+    display: inline-block;
+}
+.page_name span {
+    color: darkgoldenrod
+}
+.btn {
+    display: inline-block;
+}
+footer {
+    background-color: #0d6efd;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer p {
+    margin: 0;
+    font-size: 13px;
+    color: white;
+    font-weight: 600;
+}
