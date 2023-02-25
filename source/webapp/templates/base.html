@@ -22,10 +22,11 @@
                          class="d-inline-block align-text-top">
                     Guest Book
                 </a>
+                {% block navbar_items %}{% endblock %}
                 <div class="collapse navbar-collapse text-uppercase ps-5 justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Записи</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Записи</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'record_add' %}">Добавить новую
@@ -33,11 +34,6 @@
                         </li>
                     </ul>
                 </div>
-                <form class="form-inline my-2 my-lg-0" action="{% url 'home' %}">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Найти" aria-label="Search"
-                           name="search">
-                    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Найти</button>
-                </form>
             </div>
         </nav>
     </div>

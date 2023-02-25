@@ -7,5 +7,5 @@ urlpatterns = [
     path("", guest_book_view, name="home"),
     path("record/add", record_add, name="record_add"),
     path('record/<int:pk>/edit', record_edit, name='record_edit'),
-    path('record/<int:pk>/delete', record_delete, name='record_delete'),
+    path('record/<int:pk>/delete', record_delete, name='record_delete')
 ]

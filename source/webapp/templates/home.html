@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Records View{% endblock %}
+{% block navbar_items %}
+<form class="d-flex" action="{% url 'home' %}">
+    <input class="form-control me-2" type="search" placeholder="Найти" aria-label="Search"
+           name="search">
+    <button class="btn btn-outline-light" type="submit">Найти</button>
+</form>
+{% endblock %}
 {% block content_heading %}Гостевая книга{% endblock %}
 {% block content %}
 {% if records %}
-{% for record in records %}
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-        <div class="card">
+    {% for record in records %}
+    <div class="col pt-3">
+        <div class="card border-dark">
             <div class="card-body view_body">
                 <h5 class="card-title">{{ record.author }} ({{ record.email }})</h5>
-                <a href="{% url 'record_edit' record.pk %}"><img src="{% static 'media/edit.jpg' %}" alt="edit"
-                                                                 width="30" height="30"></a>
-                <a href="{% url 'record_delete' record.pk %}" class="card-link text-danger" data-bs-toggle="modal"
-                   data-bs-target="#exampleModal-{{ record.pk }}"><img src="{% static 'media/delete.jpg' %}"
-                                                                       alt="delete" width="25" height="25"></a>
+                <div class="records_links">
+                    <a href="{% url 'record_edit' record.pk %}" class="card-edit-button"><img
+                            src="{% static 'media/edit.jpg' %}" alt="edit" width="30" height="35"></a>
+                    <a href="{% url 'record_delete' record.pk %}" class="card-link text-danger" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal-{{ record.pk }}" class="card-delete-button"><img
+                            src="{% static 'media/delete.jpg' %}" alt="delete" width="25" height="25"></a>
+                </div>
                 <div class="confirm-delete">
                     <div class="modal fade" id="exampleModal-{{ record.pk }}" tabindex="-1"
                          aria-labelledby="exampleModalLabel"
@@ -48,12 +57,12 @@
             </div>
         </div>
     </div>
-</div>
-{% endfor %}
-{% else %}
-<div class="another_view">
-    <h2>Записей нет!</h2>
-    <p><a href="{% url 'record_add' %}">Добавить запись</a></p>
+    {% endfor %}
+    {% else %}
+    <div class="another_view">
+        <h2>Записей нет!</h2>
+        <p><a href="{% url 'record_add' %}">Добавить запись</a></p>
+    </div>
 </div>
 {% endif %}
 {% endblock %}
