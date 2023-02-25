@@ -17,16 +17,12 @@ class GuestBook(models.Model):
     edited_at = models.DateTimeField(auto_now=True, verbose_name="Дата и время изменения")
     status = models.CharField(max_length=20, null=False, blank=False, choices=StatusChoice.choices,
                               default=StatusChoice.ACTIVE, verbose_name="Статус")
-    is_deleted = models.BooleanField(null=False, default=False, verbose_name="Удален")
-    deleted_at = models.DateTimeField(null=True, default=None, verbose_name="Дата и время удаления")
 
     def __str__(self):
         return f'{self.author} | {self.email} | {self.status}'
 
     def delete(self, using=None, keep_parents=False):
-        self.is_deleted = True
         self.status = StatusChoice.BLOCKED
-        self.deleted_at = timezone.now()
         self.save()
 
     class Meta:

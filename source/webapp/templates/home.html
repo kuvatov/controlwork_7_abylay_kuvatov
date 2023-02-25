@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Records View{% endblock %}
 {% block content_heading %}Гостевая книга{% endblock %}
 {% block content %}
@@ -7,11 +8,13 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body view_body">
                 <h5 class="card-title">{{ record.author }} ({{ record.email }})</h5>
-                <a href="{% url 'record_edit' record.pk %}">Редактировать</a>
+                <a href="{% url 'record_edit' record.pk %}"><img src="{% static 'media/edit.jpg' %}" alt="edit"
+                                                                 width="30" height="30"></a>
                 <a href="{% url 'record_delete' record.pk %}" class="card-link text-danger" data-bs-toggle="modal"
-                   data-bs-target="#exampleModal-{{ record.pk }}">Удалить</a>
+                   data-bs-target="#exampleModal-{{ record.pk }}"><img src="{% static 'media/delete.jpg' %}"
+                                                                       alt="delete" width="25" height="25"></a>
                 <div class="confirm-delete">
                     <div class="modal fade" id="exampleModal-{{ record.pk }}" tabindex="-1"
                          aria-labelledby="exampleModalLabel"

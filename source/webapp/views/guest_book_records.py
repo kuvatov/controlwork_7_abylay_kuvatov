@@ -1,13 +1,17 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.db.models import Q
 from webapp.forms import GuestBookForm
 from webapp.models import GuestBook
 
 
 # Create your views here.
 def guest_book_view(request: WSGIRequest):
-    records = GuestBook.objects.exclude(is_deleted=True)
+    search_record = request.GET.get('search')
+    if search_record:
+        records = GuestBook.objects.filter(Q(author__icontains=search_record) | Q(text__icontains=search_record))
+    else:
+        records = GuestBook.objects.exclude(status='blocked').order_by('-created_at')
     context = {
         'records': records
     }
