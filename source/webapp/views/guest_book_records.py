@@ -1,5 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.forms import GuestBookForm
 from webapp.models import GuestBook
@@ -27,4 +27,23 @@ def record_add(request: WSGIRequest):
     else:
         return render(request, 'record_add.html', context={
             'form': form
+        })
+
+
+def record_edit(request: WSGIRequest, pk: int):
+    record = get_object_or_404(GuestBook, pk=pk)
+    if request.method == 'GET':
+        form = GuestBookForm(instance=record)
+        return render(request, 'record_edit.html', context={
+            'form': form,
+            'record': record
+        })
+    form = GuestBookForm(request.POST, instance=record)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+    else:
+        return render(request, 'record_edit.html', context={
+            'form': form,
+            'record': record
         })

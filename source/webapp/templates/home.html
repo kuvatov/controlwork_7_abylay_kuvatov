@@ -9,6 +9,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ record.author }} ({{ record.email }})</h5>
+                <a href="{% url 'record_edit' record.pk %}">Edit</a>
                 <p class="card-text">{{ record.text }}</p>
             </div>
         </div>
@@ -18,7 +19,7 @@
 {% else %}
 <div class="another_view">
     <h2>Записей нет!</h2>
-    <p><a href="#">Добавить запись</a></p>
+    <p><a href="{% url 'record_add' %}">Добавить запись</a></p>
 </div>
 {% endif %}
 {% endblock %}
